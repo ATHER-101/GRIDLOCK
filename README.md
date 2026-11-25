@@ -6,7 +6,7 @@ An offline Formula 1 word-search game for Android, built with Flutter. Find driv
   <img src="lib/assets/images/f1_logo-bgless.png" alt="GRIDLOCK F1 logo" width="360" />
 </p>
 <p align="center">
-  <a href="https://github.com/ATHER-101/GRIDLOCK/releases/latest/download/GRIDLOCK_v1.apk">
+  <a href="https://github.com/ATHER-101/GRIDLOCK/releases/latest/download/GRIDLOCK.apk">
     <img src="lib/assets/images/download.png" alt="Download GRIDLOCK APK" width="190" />
   </a>
 </p>
@@ -38,4 +38,4 @@ An offline Formula 1 word-search game for Android, built with Flutter. Find driv
 
 ## Download Android APK
 
-[Download the latest GRIDLOCK Android APK](https://github.com/ATHER-101/GRIDLOCK/releases/latest/download/GRIDLOCK_v1.apk)
+[Download the latest GRIDLOCK Android APK](https://github.com/ATHER-101/GRIDLOCK/releases/latest/download/GRIDLOCK.apk)
