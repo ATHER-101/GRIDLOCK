@@ -1,0 +1,30 @@
+name: word_hunt_f1
+description: An offline Formula 1-themed word-search game.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  material_ui: ^1.1.0
+  shared_preferences: ^2.5.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/assets/images/f1_logo-bgless.png
+  fonts:
+    - family: Formula1
+      fonts:
+        - asset: lib/assets/fonts/Formula1-Regular_web_0.ttf
+          weight: 400
+        - asset: lib/assets/fonts/Formula1-Bold_web_0.ttf
+          weight: 700

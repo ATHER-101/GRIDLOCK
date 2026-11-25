@@ -1,0 +1,73 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def signingProperties = new Properties()
+def signingPropertiesFile = rootProject.file("key.properties")
+if (signingPropertiesFile.exists()) {
+    signingProperties.load(new FileInputStream(signingPropertiesFile))
+}
+def releaseStorePassword = signingPropertiesFile.exists()
+    ? signingProperties['storePassword']
+    : System.getenv('GRIDLOCK_STORE_PASSWORD')
+def releaseKeyPassword = signingPropertiesFile.exists()
+    ? signingProperties['keyPassword']
+    : System.getenv('GRIDLOCK_KEY_PASSWORD')
+def releaseKeyAlias = signingPropertiesFile.exists()
+    ? signingProperties['keyAlias']
+    : System.getenv('GRIDLOCK_KEY_ALIAS')
+def releaseStoreFile = signingPropertiesFile.exists()
+    ? signingProperties['storeFile']
+    : System.getenv('GRIDLOCK_STORE_FILE')
+def hasReleaseSigning = releaseStorePassword && releaseKeyPassword &&
+    releaseKeyAlias && releaseStoreFile
+
+android {
+    namespace = "com.wordhuntf1.app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        applicationId = "com.wordhuntf1.app"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode.toInteger()
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            if (hasReleaseSigning) {
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+                storeFile file(releaseStoreFile)
+                storePassword releaseStorePassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig hasReleaseSigning
+                ? signingConfigs.release
+                : signingConfigs.debug
+        }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
+flutter {
+    source = "../.."
+}
